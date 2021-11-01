@@ -27,7 +27,7 @@ if (isset($_POST["role"])) {
     $query .= " WHERE name LIKE :role";
     $params =  [":role" => "%$search%"];
 }
-$query .= " ORDER BY modified LIMIT 10";
+$query .= " ORDER BY modified desc LIMIT 10";
 $db = getDB();
 $stmt = $db->prepare($query);
 $roles = [];

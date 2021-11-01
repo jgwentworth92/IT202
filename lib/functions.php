@@ -97,9 +97,6 @@ function getMessages()
         return $flashes;
     }
     return array();
-<<<<<<< HEAD
-}
-=======
 }
 //TODO generic helpers
 function reset_session()
@@ -133,4 +130,3 @@ function get_url($dest)
     //handle relative path
     return $BASE_PATH . $dest;
 }
->>>>>>> 6e24b55eebdd30d50313996d691de6f3612121b3
