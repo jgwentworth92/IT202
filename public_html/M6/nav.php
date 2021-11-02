@@ -6,7 +6,7 @@ require(__DIR__ . "/../../lib/functions.php");
 ?>
 <nav>
     <ul>
-        <li><a href="dynamic_add.php">Create Sample</a></li>
+        <li><a href="dynamic_create.php">Create Sample</a></li>
         <li><a href="dynamic_list.php">View Samples</a></li>
         <!-- don't do it this way, you can't hard code an id like this. This is just for a working example-->
         <li><a href="dynamic_edit.php?id=1">Edit Sample id 1</a></li>
