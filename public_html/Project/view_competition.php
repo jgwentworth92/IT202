@@ -15,9 +15,10 @@ if ($id < 1) {
     redirect("list_competitions.php");
 }
 //handle page load
-$stmt = $db->prepare("SELECT BGD_Competitions.id, title, min_participants, current_participants, current_reward, expires, creator_id, min_score, join_cost, IF(competition_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM BGD_Competitions
+$stmt = $db->prepare(
+"SELECT BGD_Competitions.id , title, min_participants, current_participants, current_reward, expires, creator_id, min_score, join_cost, IF(competition_id is null, 0, 1) as joined,  CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM BGD_Competitions
 JOIN BGD_Payout_Options on BGD_Payout_Options.id = BGD_Competitions.payout_option
-LEFT JOIN BGD_UserComps on BGD_UserComps.competition_id = BGD_Competitions.id WHERE user_id = :uid AND BGD_Competitions.id = :cid");
+LEFT JOIN (SELECT * FROM BGD_UserComps where BGD_UserComps.user_id = :uid) as t on t.competition_id = BGD_Competitions.id WHERE BGD_Competitions.id = :cid");
 $row = [];
 $comp = "";
 try {
